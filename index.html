@@ -8,58 +8,86 @@
     body {
       margin: 0;
       font-family: 'Arial', sans-serif;
-      background-color: #f4f4f4;
+      background-color: #f0f0f8;
       color: #333;
+      text-align: center;
+      overflow-x: hidden;
     }
 
     .container {
       max-width: 900px;
       margin: 0 auto;
-      padding: 1.5rem;
-      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    .flag {
+      width: 60px;
+      animation: wave 2s infinite ease-in-out;
+    }
+
+    @keyframes wave {
+      0% { transform: rotate(0deg) scale(1); }
+      25% { transform: rotate(3deg) scale(1.03); }
+      50% { transform: rotate(0deg) scale(1); }
+      75% { transform: rotate(-3deg) scale(1.03); }
+      100% { transform: rotate(0deg) scale(1); }
     }
 
     .slogan-wrapper {
       display: flex;
-      flex-direction: row;
       align-items: center;
       justify-content: center;
       gap: 1rem;
       flex-wrap: wrap;
+      margin-bottom: 1.5rem;
     }
 
     .slogan {
       flex: 1;
       font-size: 1.1rem;
       font-weight: bold;
-      color: #c00;
-      max-width: 150px;
+      color: #b22222;
+      max-width: 160px;
+      opacity: 0;
+      animation: fadeSlideIn 1.5s forwards;
     }
+
+    .slogan.left { animation-delay: 0.3s; }
+    .slogan.right { animation-delay: 0.6s; }
 
     img {
       width: 100%;
       max-width: 400px;
       height: auto;
       border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      margin: 1rem 0;
+      opacity: 0;
+      animation: fadeIn 1.5s 0.8s forwards;
     }
 
     h1 {
       font-size: 2rem;
       margin: 1rem 0 0.2rem;
+      opacity: 0;
+      animation: fadeIn 1s 1s forwards;
     }
 
     .title {
       font-size: 1.2rem;
       color: #555;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1rem;
+      opacity: 0;
+      animation: fadeIn 1s 1.2s forwards;
     }
 
     .quote {
       font-size: 1.1rem;
-      margin: 1.5rem auto;
       max-width: 500px;
+      margin: 1rem auto 2rem;
       padding: 0 1rem;
+      opacity: 0;
+      animation: fadeIn 1s 1.4s forwards;
     }
 
     .buttons a {
@@ -71,29 +99,51 @@
       margin: 0.5rem;
       display: inline-block;
       font-weight: bold;
-      transition: background-color 0.3s ease;
+      transition: background-color 0.3s ease, transform 0.3s;
+      opacity: 0;
+      animation: fadeIn 1s 1.6s forwards;
     }
 
     .buttons a:hover {
       background-color: #0056b3;
+      transform: scale(1.05);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeSlideIn {
+      from { opacity: 0; transform: translateX(-30px); }
+      to { opacity: 1; transform: translateX(0); }
     }
 
     @media (max-width: 768px) {
       .slogan-wrapper {
         flex-direction: column;
       }
-      .slogan {
-        max-width: none;
+      .flag {
+        width: 40px;
       }
     }
   </style>
 </head>
 <body>
   <div class="container">
+
     <div class="slogan-wrapper">
-      <div class="slogan">Freedom<br>Unity<br>Justice</div>
+      <div class="slogan left">
+        <img class="flag" src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" alt="USA Flag"><br>
+        Freedom<br>Unity<br>Justice
+      </div>
+
       <img src="IMG_2480.jpg" alt="Zain Shaito">
-      <div class="slogan">Make Texas<br>Strong Again</div>
+
+      <div class="slogan right">
+        Make Texas<br>Strong Again<br>
+        <img class="flag" src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" alt="USA Flag">
+      </div>
     </div>
 
     <h1>Zain Shaito</h1>
